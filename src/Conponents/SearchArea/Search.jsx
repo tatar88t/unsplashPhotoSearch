@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {unSplashAPI} from "../api/PhotoReq";
+import SearchResults from "../SearchResults/SearchResults";
 const ACCESS_KEY = "CjpdSYrOLRzcHFUxRtusBFumy9WaAVNpAXPlOPBEDuA";
 const Search = () => {
     const [query, setQuery] = useState('');
@@ -24,12 +25,7 @@ const Search = () => {
                 <input onChange = {handleChange} type = 'text' name = 'query' placeholder = 'Search images...'/>
                 <button >Search</button>
             </form>
-            <div>
-                {imgRecieved.map(img => (
-                    <img src = {img.urls.small} alt = 'img' key = {img.id}/>
-                    )
-                )}
-            </div>
+            <SearchResults imgRecieved = {imgRecieved}/>
         </div>
     )
 }
